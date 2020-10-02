@@ -114,3 +114,55 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+const articles = document.querySelector('.articles');
+articles.style.padding = '5%'
+
+function articleMaker(data) {
+  
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const dateOfArticle = document.createElement('p');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+  //set class names
+  dateOfArticle.classList.add('date');
+  expandButton.classList.add('expandButton');
+  secondParagraph.classList.add('expand');
+  thirdParagraph.classList.add('expand');
+
+  // set structure
+  article.appendChild(articleTitle);
+  article.appendChild(dateOfArticle);
+  article.appendChild(firstParagraph);
+  article.appendChild(secondParagraph);
+  article.appendChild(thirdParagraph);
+  article.appendChild(expandButton)
+
+  articleTitle.innerHTML = data[0].title;
+  dateOfArticle.innerHTML = data[0].date;
+  firstParagraph.innerHTML = data[0].firstParagraph;
+  secondParagraph.innerHTML = data[0].secondParagraph;
+  thirdParagraph.innerHTML = data[0].thirdParagraph;
+  expandButton.innerHTML = 'Expand Article'
+
+  expandButton.addEventListener('click', (event) => {
+    articles.classList.toggle('article-open');
+    secondParagraph.classList.toggle('expand');
+    thirdParagraph.classList.toggle('expand');
+  })
+  return article;
+}
+// console.log(data)
+articles.appendChild(articleMaker(data));
+
+data.forEach((elem) => {
+  console.log(elem);
+  // articles.appendChild(articleMaker(elem));
+})
+
+// for(let i = 0; i < data.length; i++){
+   
+// }
