@@ -86,6 +86,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Shazeen Fabius',
+    date: 'June 15, 1993',
+    firstParagraph: `I love Leslie and Damien`,
+
+    secondParagraph: `Coding makes my head hurt but i like it when I figure it out! `,
+
+    thirdParagraph: `I finally did component one`
   }
 ];
 
@@ -117,7 +126,7 @@ const data = [
 const articles = document.querySelector('.articles');
 articles.style.padding = '5%'
 
-function articleMaker(data) {
+function articleMaker(title, date, firstPar, secondPar, thirdPar) {
   
   const article = document.createElement('div');
   const articleTitle = document.createElement('h2');
@@ -141,12 +150,12 @@ function articleMaker(data) {
   article.appendChild(thirdParagraph);
   article.appendChild(expandButton)
 
-  articleTitle.innerHTML = data[0].title;
-  dateOfArticle.innerHTML = data[0].date;
-  firstParagraph.innerHTML = data[0].firstParagraph;
-  secondParagraph.innerHTML = data[0].secondParagraph;
-  thirdParagraph.innerHTML = data[0].thirdParagraph;
-  expandButton.innerHTML = 'Expand Article'
+  articleTitle.textContent = title;
+  dateOfArticle.textContent = date;
+  firstParagraph.textContent = firstPar;
+  secondParagraph.textContent = secondPar;
+  thirdParagraph.textContent = thirdPar;
+  expandButton.textContent = 'Expand Article'
 
   expandButton.addEventListener('click', (event) => {
     articles.classList.toggle('article-open');
@@ -156,13 +165,9 @@ function articleMaker(data) {
   return article;
 }
 // console.log(data)
-articles.appendChild(articleMaker(data));
+// articles.appendChild(articleMaker(data));
 
-data.forEach((elem) => {
-  console.log(elem);
-  // articles.appendChild(articleMaker(elem));
-})
-
-// for(let i = 0; i < data.length; i++){
-   
-// }
+data.forEach(data => {
+  console.log(data);
+  articles.appendChild(articleMaker(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+});
