@@ -141,6 +141,7 @@ function articleMaker(title, date, firstPar, secondPar, thirdPar) {
   expandButton.classList.add('expandButton');
   secondParagraph.classList.add('expand');
   thirdParagraph.classList.add('expand');
+  // article.classList.add('article')
 
   // set structure
   article.appendChild(articleTitle);
